@@ -19,12 +19,9 @@ now = datetime.datetime.now()
 # requests links
 source_cpu = requests.get('https://www.pccomponentes.com/amd-ryzen-7-3700x-36ghz-box').text
 source_gpu = requests.get('https://www.pccomponentes.com/gigabyte-geforce-gtx-1660-super-oc-6gb-gddr6').text
-#sour_cpu = requests.get('https://amzn.to/3eKMviR').text
-#sour_gpu = requests.get('').text
 
 soup_cpu = bs(source_cpu, 'lxml')
 soup_gpu = bs(source_gpu, 'lxml')
-#so_cpu = bs(sour_cpu, 'lxml')
 
 # cpu pccomponentes.com
 price = soup_cpu.find('div', class_='precioMain h1')
@@ -35,9 +32,6 @@ cent = price.find('span', class_='cents').text
 priceg = soup_gpu.find('div', class_='precioMain h1')
 eurg = priceg.find('span', class_='baseprice').text
 centg = priceg.find('span', class_='cents').text
-
-# cpu amazon.es
-# gpu amazon.es
 
 print(f'{now.year}-{now.month}-{now.day}') #day
 print(f'{eur}{cent}')   #cpu
